@@ -188,7 +188,7 @@
         const callGemini = async (prompt, imageData, apiKey) => {
             if (!apiKey) throw new Error("Gemini API Anahtarı eksik.");
             
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-001:generateContent?key=${apiKey}`;
             
             const requestBody = {
                 contents: [{ parts: [] }]
