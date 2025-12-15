@@ -65,7 +65,8 @@
             Monitor: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>,
             X: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
             Check: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
-            AlertTriangle: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            AlertTriangle: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>,
+            Copy: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
         };
 
         // =================================================================================
@@ -75,11 +76,15 @@
         let firebaseConfig;
         let appId;
 
+        // 1. ÖNİZLEME MODU (Burada otomatik çalışır)
         if (typeof __firebase_config !== 'undefined') {
             firebaseConfig = JSON.parse(__firebase_config);
             appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         } 
+        // 2. YAYINLAMA / LOCALHOST MODU (İndirdiğiniz dosya için burayı doldurun!)
         else {
+            // DİKKAT: Dosyayı indirip çalıştırıyorsanız buradaki bilgileri
+            // kendi Firebase proje bilgilerinizle değiştirmelisiniz!
             firebaseConfig = {
                 apiKey: "AIzaSyAfxpTsjdflSCFcxPrTFlpu-OR4mFSmW00",
                 authDomain: "transfer-864ec.firebaseapp.com",
@@ -89,7 +94,7 @@
                 appId: "1:153510424736:web:fc2b3a85f28cbc0895d9c5",
                 measurementId: "G-X0NTS1FE5T"
             };
-            appId = "transfer-864ec";
+            appId = "transfer-864ec"; 
         }
 
         const app = initializeApp(firebaseConfig);
@@ -208,6 +213,11 @@ Metni temiz, kısa ve maddeler halinde formatla.
                         }
                     } catch (err) {
                         console.error("Auth init error:", err);
+                        if (err.code === 'auth/api-key-not-valid-please-pass-a-valid-api-key') {
+                           setStatusMsg("HATA: Firebase API Anahtarı hatalı! Lütfen index.html dosyasındaki ayarları kontrol edin.");
+                        } else {
+                           setStatusMsg("Bağlantı Hatası: " + err.message);
+                        }
                     }
                 };
 
