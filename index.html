@@ -88,7 +88,11 @@
             Stethoscope: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>,
             FileText: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>,
             Sparkles: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M9 3v4"/><path d="M3 5h4"/><path d="M3 9h4"/></svg>,
-            Send: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            Send: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>,
+            HelpCircle: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>,
+            ExternalLink: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>,
+            AlertTriangle: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>,
+            Copy: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
         };
 
         // =================================================================================
@@ -188,7 +192,8 @@
         const callGemini = async (prompt, imageData, apiKey) => {
             if (!apiKey) throw new Error("Gemini API Anahtarı eksik.");
             
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-001:generateContent?key=${apiKey}`;
+            // MODEL GÜNCELLEMESİ: En standart sürüm
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             
             const requestBody = {
                 contents: [{ parts: [] }]
@@ -298,7 +303,7 @@ Dil: Türkçe, basit, anlaşılır.
             const imgRef = useRef(null);
 
             // AI & Tab State
-            const [geminiKey, setGeminiKey] = useState(localStorage.getItem('gemini_key') || 'AIzaSyAGaXGTyOyouEJPUKTlYlmEoXHgQlJpxYY');
+            const [geminiKey, setGeminiKey] = useState(localStorage.getItem('gemini_key') || '');
             const [isAnalyzing, setIsAnalyzing] = useState(false);
             const [aiResult, setAiResult] = useState(null);
             const [showSettings, setShowSettings] = useState(false);
@@ -464,17 +469,39 @@ Dil: Türkçe, basit, anlaşılır.
                         <div className="flex items-center justify-between mb-4 px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 shadow-lg shrink-0">
                             <div className="flex items-center gap-3"><div className="p-2 bg-red-500/20 rounded-lg"><Icons.Activity className="w-6 h-6 text-red-400" /></div><div><h2 className="text-lg font-bold">EKG Konsolu</h2><div className="text-xs text-slate-400 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Ortak Alan Aktif</div></div></div>
                             <div className="flex items-center gap-3">
-                                <button onClick={() => setShowSettings(!showSettings)} className="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-md border border-slate-600">{geminiKey ? '🔑 API Anahtarı OK' : '⚠️ API Anahtarı Gir'}</button>
+                                <button onClick={() => setShowSettings(!showSettings)} className="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-md border border-slate-600 flex items-center gap-1">
+                                    {geminiKey ? '🔑 API Anahtarı OK' : <><Icons.AlertTriangle className="w-3 h-3 text-yellow-500" /> <span>API Anahtarı Gir</span></>}
+                                </button>
                                 <button onClick={() => setMode(null)} className="flex items-center gap-1 text-slate-400 hover:text-white px-3 py-1.5 hover:bg-slate-700 rounded-md"><Icons.X className="w-4 h-4" /> Çıkış</button>
                             </div>
                         </div>
 
                         {showSettings && (
                             <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-                                <div className="bg-slate-800 p-6 rounded-xl border border-slate-600 w-full max-w-md shadow-2xl">
+                                <div className="bg-slate-800 p-6 rounded-xl border border-slate-600 w-full max-w-md shadow-2xl overflow-y-auto max-h-[90vh]">
                                     <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><Icons.BrainCircuit className="w-5 h-5 text-purple-400" /> Ayarlar</h3>
-                                    <input type="password" value={geminiKey} onChange={(e) => setGeminiKey(e.target.value)} placeholder="AI API Key" className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white mb-4 outline-none" />
-                                    <div className="flex justify-end gap-2"><button onClick={() => setShowSettings(false)} className="px-4 py-2 text-slate-400 hover:text-white">İptal</button><button onClick={saveKey} className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg">Kaydet</button></div>
+                                    
+                                    <div className="mb-6 bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                                        <h4 className="text-sm font-bold text-slate-300 mb-2 flex items-center gap-2"><Icons.HelpCircle className="w-4 h-4" /> Google Gemini API Anahtarı Nasıl Alınır?</h4>
+                                        <ol className="text-xs text-slate-400 list-decimal pl-4 space-y-2">
+                                            <li><a href="https://aistudio.google.com/app/apikey" target="_blank" className="text-blue-400 hover:underline flex items-center gap-1 inline-flex">Google AI Studio <Icons.ExternalLink className="w-3 h-3" /></a> sayfasına gidin.</li>
+                                            <li>Google hesabınızla giriş yapın.</li>
+                                            <li><strong>"Create API key"</strong> butonuna tıklayın.</li>
+                                            <li><strong>"Create API key in new project"</strong> seçeneğini seçin.</li>
+                                            <li>Oluşturulan <code>AIza...</code> ile başlayan kodu kopyalayın.</li>
+                                            <li>Aşağıdaki alana yapıştırıp <strong>Kaydet</strong> butonuna basın.</li>
+                                        </ol>
+                                    </div>
+
+                                    <div className="mb-4">
+                                        <label className="block text-xs text-slate-400 mb-1">API Anahtarı</label>
+                                        <input type="password" value={geminiKey} onChange={(e) => setGeminiKey(e.target.value)} placeholder="AIzaSy..." className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:border-purple-500 outline-none transition-colors" />
+                                    </div>
+                                    
+                                    <div className="flex justify-end gap-2">
+                                        <button onClick={() => setShowSettings(false)} className="px-4 py-2 text-slate-400 hover:text-white">İptal</button>
+                                        <button onClick={saveKey} className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-medium shadow-lg shadow-purple-500/20">Kaydet</button>
+                                    </div>
                                 </div>
                             </div>
                         )}
