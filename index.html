@@ -201,7 +201,8 @@ Eğer görüntü EKG değilse veya okunamıyorsa bunu belirt.
 Metni temiz, kısa ve maddeler halinde formatla.
             `;
             const cleanBase64 = base64Image.split(',')[1];
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            // MODEL GÜNCELLEMESİ: gemini-1.5-flash-latest kullanılıyor
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
             
             const response = await fetch(url, {
                 method: 'POST',
