@@ -83,7 +83,12 @@
             RotateCw: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>,
             RotateCcw: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>,
             Crop: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>,
-            Users: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Users: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+            MessageSquare: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
+            Stethoscope: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>,
+            FileText: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>,
+            Sparkles: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M9 3v4"/><path d="M3 5h4"/><path d="M3 9h4"/></svg>,
+            Send: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
         };
 
         // =================================================================================
@@ -115,7 +120,6 @@
         const db = getFirestore(app);
         try { if (typeof getAnalytics === 'function') getAnalytics(app); } catch(e) {}
 
-        // SABİT ODA KİMLİĞİ - ARTIK KOD YOK, HERKES AYNI ODADA
         const GLOBAL_ROOM_ID = "acil_servis_ortak_alan";
 
         const compressImage = (file) => {
@@ -149,7 +153,6 @@
             });
         };
 
-        // Görüntü Döndürme
         const rotateImage = (base64Str, degree) => {
             return new Promise((resolve) => {
                 const img = new Image();
@@ -166,7 +169,6 @@
             });
         };
 
-        // Görüntü Kırpma
         const cropImage = (base64Str, cropRect) => {
             return new Promise((resolve) => {
                 const img = new Image();
@@ -182,34 +184,31 @@
             });
         };
 
-        // AI Analiz
-        const analyzeECGWithGemini = async (base64Image, apiKey) => {
+        // --- GEMINI API FONKSİYONLARI ---
+        const callGemini = async (prompt, imageData, apiKey) => {
             if (!apiKey) throw new Error("Gemini API Anahtarı eksik.");
-            const prompt = `
-Sen uzman bir Acil Tıp Hekimi ve Kardiyologsun. 
-Görevin: Sana verilen EKG (Elektrokardiyografi) görüntüsünü acil servis şartlarında analiz etmek.
-Analizi şu başlıklar altında Türkçe olarak yap:
-1. **Ritim ve Hız:** (Sinüs ritmi mi? Taşikardi/Bradikardi var mı? Hız kaç?)
-2. **Aks ve İletim:** (Aks sapması, PR aralığı, QT aralığı).
-3. **Dal Blokları:** (RBBB, LBBB veya hemiblok var mı?)
-4. **İskemi ve Enfarktüs:** (ST yükselmesi/çökmesi, T negatifliği, Patolojik Q dalgası).
-5. **Kritik Sendromlar & MI Eşdeğerleri:** (Özellikle şunları kontrol et: Wellens Sendromu, De Winter T dalgaları, Sgarbossa Kriterleri, aVR'de ST yükselmesi).
-6. **Elektrolit İmbalansı:** (Hiperkalemi bulgusu var mı?)
-
-**ÖNEMLİ:** Eğer hayati tehlike arz eden acil bir durum (STEMI, VT, VF, 3. derece blok, Ciddi Hiperkalemi vb.) varsa, raporun en başına "🚨 **ACİL DURUM:**" etiketiyle büyük harflerle yaz.
-Eğer görüntü EKG değilse veya okunamıyorsa bunu belirt.
-Metni temiz, kısa ve maddeler halinde formatla.
-            `;
-            const cleanBase64 = base64Image.split(',')[1];
-            // MODEL GÜNCELLEMESİ: gemini-1.5-flash-latest kullanılıyor
+            
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
             
+            const requestBody = {
+                contents: [{ parts: [] }]
+            };
+
+            // Metin ekle
+            requestBody.contents[0].parts.push({ text: prompt });
+
+            // Görsel varsa ekle (Base64)
+            if (imageData) {
+                const cleanBase64 = imageData.split(',')[1];
+                requestBody.contents[0].parts.push({ 
+                    inline_data: { mime_type: "image/jpeg", data: cleanBase64 } 
+                });
+            }
+
             const response = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: "image/jpeg", data: cleanBase64 } }] }]
-                })
+                body: JSON.stringify(requestBody)
             });
 
             if (!response.ok) {
@@ -220,29 +219,99 @@ Metni temiz, kısa ve maddeler halinde formatla.
             return data.candidates[0].content.parts[0].text;
         };
 
+        // 1. Ana EKG Analizi
+        const analyzeECGWithGemini = async (base64Image, apiKey) => {
+            const prompt = `
+Sen uzman bir Acil Tıp Hekimi ve Kardiyologsun. 
+Görevin: Sana verilen EKG (Elektrokardiyografi) görüntüsünü analiz etmek.
+Analizi şu başlıklar altında Türkçe olarak yap:
+1. **Ritim ve Hız:** (Sinüs ritmi mi? Taşikardi/Bradikardi var mı? Hız kaç?)
+2. **Aks ve İletim:** (Aks sapması, PR aralığı, QT aralığı).
+3. **Dal Blokları:** (RBBB, LBBB veya hemiblok var mı?)
+4. **İskemi ve Enfarktüs:** (ST yükselmesi/çökmesi, T negatifliği, Patolojik Q dalgası).
+5. **Kritik Sendromlar & MI Eşdeğerleri:** (Wellens, De Winter, Sgarbossa, aVR ST elevasyonu).
+6. **Elektrolit İmbalansı:** (Hiperkalemi bulgusu var mı?)
+
+**ÖNEMLİ:** Hayati tehlike (STEMI, VT, VF, 3. derece blok vb.) varsa raporun başına "🚨 **ACİL DURUM:**" etiketi koy.
+Metni temiz, kısa, maddeler halinde formatla.
+            `;
+            return await callGemini(prompt, base64Image, apiKey);
+        };
+
+        // 2. Chatbot Fonksiyonu (Mevcut analizi ve görseli bağlam olarak kullanır)
+        const askGeminiChat = async (question, analysisContext, base64Image, apiKey) => {
+            const prompt = `
+Bağlam: Sen uzman bir kardiyologsun. Şu analiz raporuna sahip bir EKG hakkında konuşuyoruz: 
+"${analysisContext}"
+
+Kullanıcı Sorusu: "${question}"
+
+Görevin: Soruyu EKG bulguları ve tıbbi bilgin ışığında, kısa ve net bir şekilde cevapla. Gerekirse ek tetkik öner.
+            `;
+            // Sohbet sırasında görseli tekrar göndermeye gerek yok, metin analizi yeterli olabilir ama
+            // daha kesinlik için görseli de gönderiyoruz.
+            return await callGemini(prompt, base64Image, apiKey);
+        };
+
+        // 3. Tedavi Önerileri
+        const generateClinicalRecommendations = async (analysisContext, apiKey) => {
+            const prompt = `
+Bağlam: Aşağıdaki EKG analizine göre klinik yönetim önerileri hazırla:
+"${analysisContext}"
+
+Görevin: 
+1. **Acil Müdahale:** Gerekirse yapılacak ilk işlemler (MONA, defibrilasyon, pace vb.).
+2. **İleri Tetkik:** İstenmesi gereken kan testleri (Troponin, Elektrolit) veya görüntüleme (EKO).
+3. **Konsültasyon:** Kardiyoloji konsültasyonu aciliyeti.
+
+Yanıtı Türkçe, kısa ve madde madde ver.
+            `;
+            return await callGemini(prompt, null, apiKey); // Sadece metin analizi yeterli
+        };
+
+        // 4. Hasta İçin Basitleştirme
+        const generatePatientSummary = async (analysisContext, apiKey) => {
+            const prompt = `
+Aşağıdaki tıbbi EKG raporunu, tıp bilgisi olmayan bir hastanın anlayabileceği şekilde, korkutmadan ama dürüstçe özetle:
+"${analysisContext}"
+
+Dil: Türkçe, basit, anlaşılır.
+            `;
+            return await callGemini(prompt, null, apiKey);
+        };
+
         // --- Ana Bileşen ---
         function App() {
             const [user, setUser] = useState(null);
             const [mode, setMode] = useState(null);
-            // roomCode artık sabit
             const [transferredFiles, setTransferredFiles] = useState([]);
             const [selectedFile, setSelectedFile] = useState(null);
             const [uploading, setUploading] = useState(false);
             const [statusMsg, setStatusMsg] = useState('');
             const [viewMode, setViewMode] = useState('fit');
             
-            // Editör Durumları
+            // Editör
             const [cropMode, setCropMode] = useState(false);
             const [selection, setSelection] = useState(null); 
             const [isDragging, setIsDragging] = useState(false);
             const [startPos, setStartPos] = useState({x:0, y:0});
             const imgRef = useRef(null);
 
-            // AI Durumları
+            // AI & Tab State
             const [geminiKey, setGeminiKey] = useState(localStorage.getItem('gemini_key') || 'AIzaSyAGaXGTyOyouEJPUKTlYlmEoXHgQlJpxYY');
             const [isAnalyzing, setIsAnalyzing] = useState(false);
             const [aiResult, setAiResult] = useState(null);
             const [showSettings, setShowSettings] = useState(false);
+            
+            // Yeni AI Özellikleri State'leri
+            const [activeTab, setActiveTab] = useState('report'); // 'report', 'chat', 'treatment'
+            const [chatInput, setChatInput] = useState('');
+            const [chatMessages, setChatMessages] = useState([]);
+            const [isChatting, setIsChatting] = useState(false);
+            const [recommendation, setRecommendation] = useState(null);
+            const [isRecommending, setIsRecommending] = useState(false);
+            const [patientSummary, setPatientSummary] = useState(null);
+            const [isSummarizing, setIsSummarizing] = useState(false);
 
             useEffect(() => {
                 const initAuth = async () => {
@@ -261,8 +330,6 @@ Metni temiz, kısa ve maddeler halinde formatla.
 
             useEffect(() => {
                 if (!user || mode !== 'receive') return;
-                
-                // ORTAK ODAYI DİNLE
                 const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'transfer_rooms', GLOBAL_ROOM_ID);
                 setDoc(roomRef, { created: Date.now(), files: [] }, { merge: true });
                 const unsubscribe = onSnapshot(roomRef, (docSnap) => {
@@ -276,27 +343,21 @@ Metni temiz, kısa ve maddeler halinde formatla.
                     }
                 });
                 return () => unsubscribe();
-            }, [user, mode]); // roomCode dependency kalktı
+            }, [user, mode]);
 
-            // Doktor Modu Başlatma (Kod üretme yok)
             const startReceiving = () => {
                 setMode('receive');
-                // Mevcut veriyi çekelim, sıfırlamayalım ki geçmiş görünsün
                 setAiResult(null);
             };
 
             const handleFileUpload = async (e) => {
                 const file = e.target.files[0];
                 if (!file) return;
-                
                 setUploading(true);
                 try {
                     let fileData = await compressImage(file);
-                    // ORTAK ODAYA YÜKLE
                     const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'transfer_rooms', GLOBAL_ROOM_ID);
-                    // Odanın varlığından emin ol (ilk kez giriliyorsa oluşturur)
                     await setDoc(roomRef, { created: Date.now() }, { merge: true });
-                    
                     await updateDoc(roomRef, { files: arrayUnion({ id: Date.now().toString(), name: "EKG_" + new Date().toLocaleTimeString(), type: file.type, data: fileData, timestamp: Date.now() }) });
                     setStatusMsg("Başarıyla gönderildi!");
                     e.target.value = null;
@@ -304,56 +365,31 @@ Metni temiz, kısa ve maddeler halinde formatla.
                 finally { setUploading(false); setTimeout(() => setStatusMsg(''), 3000); }
             };
 
-            // ... Görüntü İşleme Fonksiyonları (Rotate, Crop) aynı kalacak ...
             const handleRotate = async (degree) => {
                 if (!selectedFile) return;
                 const newData = await rotateImage(selectedFile.data, degree);
                 const updatedFile = { ...selectedFile, data: newData };
                 setSelectedFile(updatedFile);
                 setTransferredFiles(prev => prev.map(f => f.id === selectedFile.id ? updatedFile : f));
-                setAiResult(null);
+                setAiResult(null); // Reset analysis on edit
             };
 
-            const startCrop = (e) => {
-                if (!cropMode) return;
-                e.preventDefault();
-                const rect = imgRef.current.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                setStartPos({ x, y });
-                setSelection({ x, y, width: 0, height: 0 });
-                setIsDragging(true);
-            };
-            const updateCrop = (e) => {
-                if (!isDragging || !cropMode) return;
-                e.preventDefault();
-                const rect = imgRef.current.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const width = x - startPos.x;
-                const height = y - startPos.y;
-                setSelection({ x: width > 0 ? startPos.x : x, y: height > 0 ? startPos.y : y, width: Math.abs(width), height: Math.abs(height) });
-            };
+            // Crop logic (simplified for brevity, assume same as before)
+            const startCrop = (e) => { if (!cropMode) return; e.preventDefault(); const rect = imgRef.current.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; setStartPos({ x, y }); setSelection({ x, y, width: 0, height: 0 }); setIsDragging(true); };
+            const updateCrop = (e) => { if (!isDragging || !cropMode) return; e.preventDefault(); const rect = imgRef.current.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; const width = x - startPos.x; const height = y - startPos.y; setSelection({ x: width > 0 ? startPos.x : x, y: height > 0 ? startPos.y : y, width: Math.abs(width), height: Math.abs(height) }); };
             const endCrop = () => { setIsDragging(false); };
-            const applyCrop = async () => {
-                if (!selection || selection.width < 10 || selection.height < 10) return;
-                const imgElement = imgRef.current;
-                const scaleX = imgElement.naturalWidth / imgElement.width;
-                const scaleY = imgElement.naturalHeight / imgElement.height;
-                const realSelection = { x: selection.x * scaleX, y: selection.y * scaleY, width: selection.width * scaleX, height: selection.height * scaleY };
-                const newData = await cropImage(selectedFile.data, realSelection);
-                const updatedFile = { ...selectedFile, data: newData };
-                setSelectedFile(updatedFile);
-                setTransferredFiles(prev => prev.map(f => f.id === selectedFile.id ? updatedFile : f));
-                setCropMode(false);
-                setSelection(null);
-                setAiResult(null);
-            };
+            const applyCrop = async () => { if (!selection || selection.width < 10) return; const imgElement = imgRef.current; const scaleX = imgElement.naturalWidth / imgElement.width; const scaleY = imgElement.naturalHeight / imgElement.height; const realSelection = { x: selection.x * scaleX, y: selection.y * scaleY, width: selection.width * scaleX, height: selection.height * scaleY }; const newData = await cropImage(selectedFile.data, realSelection); const updatedFile = { ...selectedFile, data: newData }; setSelectedFile(updatedFile); setTransferredFiles(prev => prev.map(f => f.id === selectedFile.id ? updatedFile : f)); setCropMode(false); setSelection(null); setAiResult(null); };
 
+            // --- AI İşlevleri ---
             const runAnalysis = async (file) => {
                 if (!geminiKey) { setShowSettings(true); return; }
                 setIsAnalyzing(true);
                 setAiResult(null);
+                setChatMessages([]); // Reset chat
+                setRecommendation(null); // Reset recs
+                setPatientSummary(null);
+                setActiveTab('report'); // Switch to report tab
+                
                 try {
                     const result = await analyzeECGWithGemini(file.data, geminiKey);
                     setAiResult({ id: file.id, text: result });
@@ -362,8 +398,48 @@ Metni temiz, kısa ve maddeler halinde formatla.
                 } finally { setIsAnalyzing(false); }
             };
 
+            const handleChatSubmit = async (e) => {
+                e.preventDefault();
+                if (!chatInput.trim() || !aiResult || !geminiKey) return;
+                
+                const userMsg = chatInput;
+                setChatMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+                setChatInput('');
+                setIsChatting(true);
+
+                try {
+                    const answer = await askGeminiChat(userMsg, aiResult.text, selectedFile.data, geminiKey);
+                    setChatMessages(prev => [...prev, { role: 'ai', text: answer }]);
+                } catch (err) {
+                    setChatMessages(prev => [...prev, { role: 'ai', text: "Hata: " + err.message }]);
+                } finally {
+                    setIsChatting(false);
+                }
+            };
+
+            const handleGetRecommendation = async () => {
+                if (!aiResult || !geminiKey) return;
+                setIsRecommending(true);
+                setActiveTab('treatment');
+                try {
+                    const rec = await generateClinicalRecommendations(aiResult.text, geminiKey);
+                    setRecommendation(rec);
+                } catch(err) { setRecommendation("Hata oluştu."); }
+                finally { setIsRecommending(false); }
+            };
+
+            const handlePatientSummary = async () => {
+                if (!aiResult || !geminiKey) return;
+                setIsSummarizing(true);
+                try {
+                    const summary = await generatePatientSummary(aiResult.text, geminiKey);
+                    setPatientSummary(summary);
+                } catch(err) { setPatientSummary("Özetlenemedi."); }
+                finally { setIsSummarizing(false); }
+            };
+
             const saveKey = () => { localStorage.setItem('gemini_key', geminiKey); setShowSettings(false); };
-            const handleFileSelect = (file) => { setSelectedFile(file); if (aiResult?.id !== file.id) setAiResult(null); };
+            const handleFileSelect = (file) => { setSelectedFile(file); if (aiResult?.id !== file.id) { setAiResult(null); setChatMessages([]); setRecommendation(null); setPatientSummary(null); } };
             const toggleViewMode = () => { setViewMode(prev => prev === 'fit' ? 'original' : 'fit'); };
 
             if (!user) return <div className="min-h-screen flex items-center justify-center p-4 text-center"><div className="flex flex-col items-center"><Icons.HeartPulse className="w-12 h-12 text-red-500 animate-pulse mb-4" /><p>Sistem Hazırlanıyor...</p></div></div>;
@@ -404,6 +480,7 @@ Metni temiz, kısa ve maddeler halinde formatla.
                         )}
 
                         <div className="grid lg:grid-cols-12 gap-6 flex-1 min-h-0">
+                            {/* SOL PANEL (Liste) */}
                             <div className="lg:col-span-3 flex flex-col gap-4 min-h-0 overflow-hidden">
                                 <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-lg text-center shrink-0">
                                     <div className="flex flex-col items-center justify-center gap-2 mb-2">
@@ -418,9 +495,11 @@ Metni temiz, kısa ve maddeler halinde formatla.
                                 </div>
                             </div>
 
+                            {/* ORTA & SAĞ PANEL */}
                             <div className="lg:col-span-9 flex gap-6 h-full min-h-0 overflow-hidden">
                                 {selectedFile ? (
                                     <>
+                                        {/* GÖRÜNTÜ ALANI */}
                                         <div className="flex-1 bg-black rounded-2xl border border-slate-700 relative flex flex-col overflow-hidden">
                                             <div className="p-2 bg-slate-800 border-b border-slate-700 flex justify-between items-center z-10 shrink-0 shadow-md">
                                                 <div className="flex items-center gap-2">
@@ -444,34 +523,81 @@ Metni temiz, kısa ve maddeler halinde formatla.
                                                 onMouseLeave={endCrop}
                                             >
                                                 <div className="relative inline-block">
-                                                    <img 
-                                                        ref={imgRef}
-                                                        src={selectedFile.data} 
-                                                        className={`transition-all duration-300 shadow-2xl ${viewMode === 'fit' ? 'max-w-full max-h-[calc(100vh-200px)] object-contain' : 'max-w-none w-auto h-auto'}`} 
-                                                        alt="ECG" 
-                                                        draggable="false"
-                                                        style={{ cursor: cropMode ? 'crosshair' : 'default' }}
-                                                    />
-                                                    {selection && cropMode && (
-                                                        <div 
-                                                            className="crop-overlay" 
-                                                            style={{ 
-                                                                left: selection.x, 
-                                                                top: selection.y, 
-                                                                width: selection.width, 
-                                                                height: selection.height 
-                                                            }}
-                                                        ></div>
-                                                    )}
+                                                    <img ref={imgRef} src={selectedFile.data} className={`transition-all duration-300 shadow-2xl ${viewMode === 'fit' ? 'max-w-full max-h-[calc(100vh-200px)] object-contain' : 'max-w-none w-auto h-auto'}`} alt="ECG" draggable="false" style={{ cursor: cropMode ? 'crosshair' : 'default' }} />
+                                                    {selection && cropMode && (<div className="crop-overlay" style={{ left: selection.x, top: selection.y, width: selection.width, height: selection.height }}></div>)}
                                                 </div>
                                                 {cropMode && !selection && <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-sm pointer-events-none">Alanı seçmek için sürükleyin</div>}
                                             </div>
                                         </div>
 
+                                        {/* ANALİZ ve AI PENCERESİ */}
                                         {aiResult && aiResult.id === selectedFile.id && (
                                             <div className="w-1/3 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col shadow-2xl animate-in slide-in-from-right duration-500">
-                                                <div className="p-4 border-b border-slate-700 bg-slate-900/50 rounded-t-2xl flex items-center justify-between shrink-0"><h3 className="font-bold text-purple-400 flex items-center gap-2"><Icons.Activity className="w-5 h-5" /> AI Raporu</h3><span className="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded">Gemini</span></div>
-                                                <div className="flex-1 p-6 overflow-y-auto prose prose-invert prose-sm max-w-none custom-scrollbar"><div dangerouslySetInnerHTML={{ __html: marked.parse(aiResult.text) }} /></div>
+                                                {/* Tab Header */}
+                                                <div className="flex border-b border-slate-700 bg-slate-900/50 rounded-t-2xl overflow-hidden shrink-0">
+                                                    <button onClick={() => setActiveTab('report')} className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'report' ? 'bg-slate-700 text-white border-b-2 border-purple-500' : 'text-slate-400 hover:bg-slate-700/50'}`}><Icons.FileText className="w-4 h-4" /> Rapor</button>
+                                                    <button onClick={() => setActiveTab('chat')} className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'chat' ? 'bg-slate-700 text-white border-b-2 border-blue-500' : 'text-slate-400 hover:bg-slate-700/50'}`}><Icons.MessageSquare className="w-4 h-4" /> AI Sohbet</button>
+                                                    <button onClick={() => { setActiveTab('treatment'); if(!recommendation) handleGetRecommendation(); }} className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'treatment' ? 'bg-slate-700 text-white border-b-2 border-green-500' : 'text-slate-400 hover:bg-slate-700/50'}`}><Icons.Stethoscope className="w-4 h-4" /> Tedavi</button>
+                                                </div>
+
+                                                <div className="flex-1 overflow-y-auto p-0 relative custom-scrollbar">
+                                                    {/* RAPOR TABI */}
+                                                    {activeTab === 'report' && (
+                                                        <div className="p-6">
+                                                            <div className="flex items-center justify-between mb-4">
+                                                                <h3 className="font-bold text-purple-400 flex items-center gap-2"><Icons.Activity className="w-5 h-5" /> Analiz Sonucu</h3>
+                                                                <button onClick={handlePatientSummary} disabled={isSummarizing} className="text-xs bg-purple-500/20 text-purple-300 hover:bg-purple-500/40 px-3 py-1.5 rounded-lg flex items-center gap-1 transition-colors">{isSummarizing ? 'Özetleniyor...' : '✨ Hasta İçin Özetle'}</button>
+                                                            </div>
+                                                            {patientSummary && (
+                                                                <div className="bg-purple-900/20 border border-purple-500/30 p-4 rounded-xl mb-6 animate-in fade-in">
+                                                                    <h4 className="text-sm font-bold text-purple-300 mb-2 flex items-center gap-2"><Icons.Sparkles className="w-4 h-4" /> Hasta Bilgilendirme Notu</h4>
+                                                                    <p className="text-sm text-slate-300 italic">{patientSummary}</p>
+                                                                </div>
+                                                            )}
+                                                            <div className="prose prose-invert prose-sm max-w-none"><div dangerouslySetInnerHTML={{ __html: marked.parse(aiResult.text) }} /></div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* SOHBET TABI */}
+                                                    {activeTab === 'chat' && (
+                                                        <div className="flex flex-col h-full">
+                                                            <div className="flex-1 p-4 overflow-y-auto space-y-4 custom-scrollbar">
+                                                                <div className="bg-slate-700/50 p-3 rounded-lg text-sm text-slate-300">
+                                                                    👋 Merhaba! Bu EKG hakkında merak ettiğiniz detayları sorabilirsiniz.
+                                                                </div>
+                                                                {chatMessages.map((msg, i) => (
+                                                                    <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                                                        <div className={`max-w-[85%] p-3 rounded-xl text-sm ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-br-none' : 'bg-slate-700 text-slate-200 rounded-bl-none'}`}>
+                                                                            {msg.text}
+                                                                        </div>
+                                                                    </div>
+                                                                ))}
+                                                                {isChatting && <div className="flex justify-start"><div className="bg-slate-700 p-3 rounded-xl rounded-bl-none"><div className="flex gap-1"><span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></span><span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-100"></span><span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-200"></span></div></div></div>}
+                                                            </div>
+                                                            <form onSubmit={handleChatSubmit} className="p-3 bg-slate-900 border-t border-slate-700 flex gap-2">
+                                                                <input type="text" value={chatInput} onChange={(e) => setChatInput(e.target.value)} placeholder="Bir soru sorun..." className="flex-1 bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white focus:border-blue-500 outline-none" />
+                                                                <button type="submit" disabled={isChatting || !chatInput.trim()} className="bg-blue-600 hover:bg-blue-500 text-white p-2 rounded-lg disabled:opacity-50"><Icons.Send className="w-5 h-5" /></button>
+                                                            </form>
+                                                        </div>
+                                                    )}
+
+                                                    {/* TEDAVİ TABI */}
+                                                    {activeTab === 'treatment' && (
+                                                        <div className="p-6">
+                                                            <h3 className="font-bold text-green-400 flex items-center gap-2 mb-4"><Icons.Stethoscope className="w-5 h-5" /> Klinik Yönetim Önerisi</h3>
+                                                            {isRecommending ? (
+                                                                <div className="flex flex-col items-center py-8 text-slate-400"><Icons.BrainCircuit className="w-8 h-8 animate-spin mb-2" /><p>Kılavuzlar taranıyor...</p></div>
+                                                            ) : recommendation ? (
+                                                                <div className="prose prose-invert prose-sm max-w-none"><div dangerouslySetInnerHTML={{ __html: marked.parse(recommendation) }} /></div>
+                                                            ) : (
+                                                                <div className="text-center py-8"><button onClick={handleGetRecommendation} className="bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded-lg">Önerileri Oluştur</button></div>
+                                                            )}
+                                                            <div className="mt-6 p-3 bg-red-900/20 border border-red-500/30 rounded-lg text-xs text-red-300">
+                                                                ⚠️ YASAL UYARI: Bu öneriler yapay zeka tarafından oluşturulmuştur ve tıbbi tavsiye niteliği taşımaz. Uygulamadan önce mutlaka klinik protokollerinizi kontrol ediniz.
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
                                             </div>
                                         )}
                                     </>
@@ -484,13 +610,7 @@ Metni temiz, kısa ve maddeler halinde formatla.
                 );
             }
 
-            if (mode === 'send') return ( <div className="min-h-screen flex flex-col fade-in bg-black"><div className="p-4 flex items-center justify-between bg-slate-900 border-b border-slate-800"><h2 className="text-lg font-bold flex items-center gap-2 text-blue-400"><Icons.Camera className="w-5 h-5" /> EKG Tarayıcı</h2><button onClick={() => setMode(null)} className="text-slate-400 hover:text-white"><Icons.X className="w-6 h-6" /></button></div><div className="flex-1 p-6 flex flex-col items-center justify-center w-full max-w-md mx-auto">
-                <div className="w-full text-center mb-8">
-                    <div className="inline-block p-4 bg-blue-500/10 rounded-full mb-4 animate-pulse"><Icons.Users className="w-12 h-12 text-blue-400" /></div>
-                    <h3 className="text-xl font-bold text-white mb-2">Açık Sisteme Bağlı</h3>
-                    <p className="text-slate-400">Çektiğiniz fotoğraf doğrudan doktor ekranına düşecektir.</p>
-                </div>
-                <label className={`relative w-full aspect-[4/3] rounded-3xl border-2 border-dashed flex flex-col items-center justify-center gap-4 cursor-pointer transition-all overflow-hidden ${uploading ? 'bg-slate-900 border-slate-700' : 'bg-slate-900 border-slate-600 hover:border-blue-500'}`}><input type="file" accept="image/*" capture="environment" onChange={handleFileUpload} disabled={uploading} className="hidden" />{uploading ? (<div className="flex flex-col items-center"><div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div><span className="text-blue-400 font-medium animate-pulse">Analiz Merkezine Gönderiliyor...</span></div>) : (<><div className="absolute inset-0 grid grid-cols-6 grid-rows-4 pointer-events-none opacity-20">{[...Array(24)].map((_, i) => <div key={i} className="border border-slate-500"></div>)}</div><div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50 z-10 hover:scale-105 transition-transform"><Icons.Camera className="w-10 h-10 text-white" /></div><div className="text-center z-10"><span className="block text-xl font-bold text-white mb-1">EKG'yi Çek</span><span className="text-sm text-slate-400 bg-black/50 px-2 py-1 rounded">Net ve ışıklı çekin</span></div></>)}</label>{statusMsg && <div className={`mt-6 px-4 py-3 rounded-lg text-sm text-center font-bold w-full animate-in slide-in-from-bottom-2 ${statusMsg.includes('Hata') ? 'bg-red-500/20 text-red-400 border border-red-500/50' : 'bg-green-500/20 text-green-400 border border-green-500/50'}`}>{statusMsg}</div>}</div></div> );
+            if (mode === 'send') return ( <div className="min-h-screen flex flex-col fade-in bg-black"><div className="p-4 flex items-center justify-between bg-slate-900 border-b border-slate-800"><h2 className="text-lg font-bold flex items-center gap-2 text-blue-400"><Icons.Camera className="w-5 h-5" /> EKG Tarayıcı</h2><button onClick={() => setMode(null)} className="text-slate-400 hover:text-white"><Icons.X className="w-6 h-6" /></button></div><div className="flex-1 p-6 flex flex-col items-center justify-center w-full max-w-md mx-auto"><div className="w-full text-center mb-8"><div className="inline-block p-4 bg-blue-500/10 rounded-full mb-4 animate-pulse"><Icons.Users className="w-12 h-12 text-blue-400" /></div><h3 className="text-xl font-bold text-white mb-2">Açık Sisteme Bağlı</h3><p className="text-slate-400">Çektiğiniz fotoğraf doğrudan doktor ekranına düşecektir.</p></div><label className={`relative w-full aspect-[4/3] rounded-3xl border-2 border-dashed flex flex-col items-center justify-center gap-4 cursor-pointer transition-all overflow-hidden ${uploading ? 'bg-slate-900 border-slate-700' : 'bg-slate-900 border-slate-600 hover:border-blue-500'}`}><input type="file" accept="image/*" capture="environment" onChange={handleFileUpload} disabled={uploading} className="hidden" />{uploading ? (<div className="flex flex-col items-center"><div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div><span className="text-blue-400 font-medium animate-pulse">Analiz Merkezine Gönderiliyor...</span></div>) : (<><div className="absolute inset-0 grid grid-cols-6 grid-rows-4 pointer-events-none opacity-20">{[...Array(24)].map((_, i) => <div key={i} className="border border-slate-500"></div>)}</div><div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50 z-10 hover:scale-105 transition-transform"><Icons.Camera className="w-10 h-10 text-white" /></div><div className="text-center z-10"><span className="block text-xl font-bold text-white mb-1">EKG'yi Çek</span><span className="text-sm text-slate-400 bg-black/50 px-2 py-1 rounded">Net ve ışıklı çekin</span></div></>)}</label>{statusMsg && <div className={`mt-6 px-4 py-3 rounded-lg text-sm text-center font-bold w-full animate-in slide-in-from-bottom-2 ${statusMsg.includes('Hata') ? 'bg-red-500/20 text-red-400 border border-red-500/50' : 'bg-green-500/20 text-green-400 border border-green-500/50'}`}>{statusMsg}</div>}</div></div> );
         }
 
         const root = createRoot(document.getElementById('root'));
